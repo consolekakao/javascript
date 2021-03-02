@@ -221,4 +221,75 @@ Null
 >console.log(string[3]);
 >result : 4   (index는 0 부터 시작.)
 >```
+>
+>
+>
+>
+>
+>특정 인덱스 범위 추출
+>
+>
+>
+>substring()
+>
+>```
+>let string = "123456789";
+>console.log(string.substring(2,5));
+>
+>result : 345
+>```
+>
+>substr()
+>
+>```
+>let string = "123456789";
+>console.log(string.substr(2,5));
+>
+>result : 34567
+>```
+>
+>substring은 시작 index~ 종료 index를 파라미터로 받지만
+>
+>substr은 두번째 인자값을 시작 index를 기준으로 잡고 잘라낸다. 
+>
+>고로 두 함수 모두 인자를 하나만 주었을때는 시작 index부터 끝까지 잘라내는 기능은 일치한다.
+
+
+
+```
+string.substring(string.length-3)
+```
+
+이런 식으로 뒤를 기준으로 잘라낼 수 있다.
+
+
+
+문자열 찾기
+
+> ```indexOf , lastIndexOf  ``` 를 활용하면 해당 문자(열)의 시작 index 또는 마지막 index를 구할 수 있다.
+>
+> 찾을 수 없다면 -1을 리턴한다.
+>
+> Ex ) 
+>
+> ```
+> let string = "123456789";
+> console.log(string.indexOf('4'));
+> 
+> result : 3
+> ```
+>
+> ```
+> let string = "123456789123456789";
+> console.log(string.lastIndexOf('4'));
+> 
+> result : 12
+> ```
+>
+> ```
+> let string = "123456789123456789";
+> console.log(string.indexOf('abc'));
+> 
+> result : -1                                 
+> ```
 
