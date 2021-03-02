@@ -133,3 +133,92 @@ Null
 |  5   |            &&             |
 |  6   |           \|\|            |
 
+
+
+
+
+### **문자열**
+
+
+
+문자열 합치기
+
+> \+ 사용해서 합치기
+>
+> ```
+> let a = "aaaa";
+> 
+> let b = "bbbb";
+> 
+> console.log(a+b);
+> 
+> result : aaaabbbb
+> ```
+>
+> 
+>
+> concat를 활용해 합치기
+>
+> ```
+> let a = "aaaa";
+> 
+> let b = "bbbb";
+> 
+> console.log(a.concat(b));
+> 
+> result : aaaabbbb
+> ```
+>
+> 
+>
+> 이중으로 concat활용
+>
+> ```
+> let a = "aaaa";
+> 
+> let b = "bbbb";
+> 
+> console.log(a.concat(b).concat(a));
+> 
+> result : aaaabbbbaaaa
+> ```
+
+
+
+
+
+문자열 다루기
+
+>문자열 길이 구하기
+>
+>```
+>let string = "123456789";
+>console.log(string.length)
+>
+>result : 9
+>```
+>
+>
+>
+>
+>
+>한 글자씩 접근하기
+>
+>```
+>let string = "123456789";
+>console.log(string.charAt(5));
+>result : 6   (index는 0 부터 시작.)
+>```
+>
+>
+>
+>
+>
+>인덱스로 접근하기
+>
+>```
+>let string = "123456789";
+>console.log(string[3]);
+>result : 4   (index는 0 부터 시작.)
+>```
+
