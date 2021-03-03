@@ -155,7 +155,7 @@ Null
 > result : aaaabbbb
 > ```
 >
-> 
+> <br>
 >
 > concat를 활용해 합치기
 >
@@ -169,7 +169,7 @@ Null
 > result : aaaabbbb
 > ```
 >
-> 
+> <br>
 >
 > 이중으로 concat활용
 >
@@ -200,7 +200,7 @@ Null
 >
 >
 >
->
+><br>
 >
 >한 글자씩 접근하기
 >
@@ -212,7 +212,7 @@ Null
 >
 >
 >
->
+><br>
 >
 >인덱스로 접근하기
 >
@@ -226,9 +226,9 @@ Null
 >
 >
 >
->특정 인덱스 범위 추출
+><br>특정 인덱스 범위 추출
 >
->
+><br>
 >
 >substring()
 >
@@ -239,7 +239,9 @@ Null
 >result : 345
 >```
 >
->substr()
+><br>substr()
+>
+><br>
 >
 >```
 >let string = "123456789";
@@ -254,7 +256,7 @@ Null
 >
 >고로 두 함수 모두 인자를 하나만 주었을때는 시작 index부터 끝까지 잘라내는 기능은 일치한다.
 
-
+<br><br>
 
 ```
 string.substring(string.length-3)
@@ -262,7 +264,7 @@ string.substring(string.length-3)
 
 이런 식으로 뒤를 기준으로 잘라낼 수 있다.
 
-
+<br><br><br>
 
 문자열 찾기
 
@@ -295,7 +297,7 @@ string.substring(string.length-3)
 
 
 
-
+<br><br><br>
 
 # 배열 생성방법
 
@@ -310,6 +312,10 @@ var g = [1, , ,3];  // 중간에 공백으로 undefined를 줄 수 있음.
 ```
 
 
+
+
+
+<br><br><br>
 
 
 
@@ -331,9 +337,11 @@ var g = [1, , ,3];  // 중간에 공백으로 undefined를 줄 수 있음.
 
 
 
+<br><br><br>
 
 
-# **직관적인거 말고 둘의 차이점이 더 있진 않을까?**
+
+# :thinking: **직관적인거 말고 둘의 차이점이 더 있진 않을까?**
 
 **구글링 결과 new Array의 파라미터에 인자를 하나만 주면 배열의 크기로 인식을 하지만 두 개이상 넣으면 배열의 초기값으로 지정한다.**
 
@@ -361,6 +369,8 @@ console.log(test);
 실제 출력 값: [3,1,2,3]
 ```
 
+
+
 **그러니까 나는 첫 번째 파라미터의 값 만큼 배열의 크기를 지정하고 두 번째 파라미터부터는 첫 번째 index값 부터 집어넣고 싶은데 생각처럼 되지 않는다.**
 
 **결국 Array()를 사용해서는 한 칸짜리 배열에 (숫자)값을 바로 할당할 수 없다는 것!**
@@ -386,13 +396,9 @@ console.log(arr);
 
 
 
+<br><br><br>
 
-
-# 
-
-# :thinking: **기능상의 차이가 없다는데 결국 []를 쓰면 Array()를 **
-
-#      **호출 하는 것 인데 속도가 저하되진 않을까?**
+#  :thinking:  **기능상의 차이가 없다는데 결국 []를 쓰면 Array()를 ** 호출 하는 것 인데 속도가 저하되진 않을까?
 
 ```javascript
 console.time('using Array');
@@ -416,7 +422,7 @@ console.timeEnd('using []');                                        //using []: 
 
 
 
-
+<br><br>
 
 #### **크롬에서 1억번 배열을 생성했을때 시간**
 
@@ -426,11 +432,13 @@ console.timeEnd('using []');                                        //using []: 
 | **99.846 ms**  | **77.564 ms** |
 | **104.616 ms** | **80.981 ms** |
 
+# <br><br>
+
 # **확실히 크롬에서는 리터럴([])이 성능이 더 우수하다고 결론지었다.**
 
 
 
-
+<br><br>
 
 
 
@@ -440,23 +448,23 @@ console.timeEnd('using []');                                        //using []: 
 
 
 
-
+<br><br>
 
 
 
 준비중.
 
+<br><br>
 
 
 
-
-
+<br>
 
 
 
 # for in   VS for of
 
-
+<br>
 
 우선 코드를 한번 보자.
 
@@ -481,7 +489,7 @@ for in
 
 
 
-for of
+<br><br>for of
 
 ```javascript
   Object.prototype.hello = 'hellowwwwwww';
@@ -496,7 +504,7 @@ for of
  [3,5,7]
 ```
 
-
+<br><br>
 
 
 
@@ -504,7 +512,7 @@ for of는 ES6에 추가된 문법으로 프로토타입이 Symbol.iterable한 �
 
 위 for of 예제를 보면 iterable에 값을 추가했음에도 [3,5,7]만 출력되었다.
 
-이는 우리가 알게모르게 Symbol이 iterable속성을 가지고 있는 Array를 사용했기 때문이다. 
+이는 우리가 알게모르게 Symbol이 iterable속성을 가지고 있는 Array를 사용했기 때문이다. <br>
 
 ![](https://cdn.discordapp.com/attachments/799514329912705064/816616338235588638/unknown.png)
 
@@ -514,7 +522,7 @@ Symbol.iterable한 속성을 가지고 있는 타입은 Array,String,Map/Set 등
 
 그래서 뒤 늦게 **. **을 사용해서 프로퍼티를 추가한 hello , bye ,mmmm는 출력되지 않았다.
 
-
+<br><br>
 
 
 
@@ -539,7 +547,7 @@ Uncaught TypeError: test is not iterable
 
 ```
 
-
+<br>
 
 iterable하지 않다고 에러난다.
 
