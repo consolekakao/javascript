@@ -464,7 +464,7 @@ console.timeEnd('using []');                                        //using []: 
 
 
 
-# for in   VS for of
+# for in   VS   for of
 
 <br>
 
@@ -551,5 +551,5 @@ Uncaught TypeError: test is not iterable
 
 <br>
 
-iterable하지 않다고 에러난다.
+**iterable하지 않다고 에러난다.**
 
