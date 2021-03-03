@@ -293,3 +293,253 @@ string.substring(string.length-3)
 > result : -1                                 
 > ```
 
+
+
+
+
+# 배열 생성방법
+
+```javascript
+var a = [];
+var b = [1,2,3,4,5];
+var c = [1.1 , true , 'a',];  // 이렇게 맨 마지막 값을 undefined로 삽입 가능.
+var d = [a,b,c];
+var e = new Array();
+var f = [{x:1},{x:2}];
+var g = [1, , ,3];  // 중간에 공백으로 undefined를 줄 수 있음.
+```
+
+
+
+
+
+# **new Array()와 리터럴([]) 선언 방식의 차이점?**
+
+```javascript
+1.    var arr = new Array(3);
+ 
+2.    var arr = [];
+```
+
+​      
+
+ **(1) 와 같은 방법으로 처음부터 Size를 정해서 배열을 생성할 수 있지만 (2) 처럼 리터럴을 사용하여 생성하는 것을 권장한다.**
+
+ **리터럴을 사용하여 배열을 생성하더라도 내부적으로 Array() 생성자 함수를 사용하여 생성하므로 기능상의 차이는 없고,** 
+
+**(2)와 같은 방법이 간소화된 문법이라고 한다.**
+
+
+
+
+
+# **직관적인거 말고 둘의 차이점이 더 있진 않을까?**
+
+**구글링 결과 new Array의 파라미터에 인자를 하나만 주면 배열의 크기로 인식을 하지만 두 개이상 넣으면 배열의 초기값으로 지정한다.**
+
+**무슨 소리인고 하니**
+
+```javascript
+let a = new Array(3);
+console.log(a);
+ 
+ 
+ 
+내가 원하는 값 : [3]
+실제 출력 값 : [empty * 3]
+ 
+let b = new Array(3,2);
+ 
+ 
+내가 원하는 값 : ['2','','']
+실제 출력 값 : [3,2]
+ 
+let test = new Array(3,1,2,3);
+console.log(test);
+ 
+내가 원하는 값: [1,2,3]
+실제 출력 값: [3,1,2,3]
+```
+
+**그러니까 나는 첫 번째 파라미터의 값 만큼 배열의 크기를 지정하고 두 번째 파라미터부터는 첫 번째 index값 부터 집어넣고 싶은데 생각처럼 되지 않는다.**
+
+**결국 Array()를 사용해서는 한 칸짜리 배열에 (숫자)값을 바로 할당할 수 없다는 것!**
+
+**하지만 리터럴 ([]) 을 이용하면 해당 문제가 사라진다!**
+
+
+
+
+
+```javascript
+let arr = [3];
+console.log(arr);
+ 
+ 
+내가 원하는 값: [3]
+실제 출력 값: [3]
+```
+
+이렇게 한칸짜리 배열에 초기화까지 바로 진행할 수 있다.
+
+**실무에서 이게 크게 의미가 있을진 겪어봐야 알겠지만!**
+
+
+
+
+
+# 
+
+# :thinking: **기능상의 차이가 없다는데 결국 []를 쓰면 Array()를 **
+
+#      **호출 하는 것 인데 속도가 저하되진 않을까?**
+
+```javascript
+console.time('using Array');
+for(let i=0; i<10000;i++){ let arr = new Array();}
+console.timeEnd('using Array');                                     //using Array: 0.374267578125 ms
+ 
+console.time('using []');
+for(let i=0;i<10000;i++) {let arr = [];}
+console.timeEnd('using []');                                        //using []: 0.239013671875 ms
+   
+console.time('using Array');
+for(let i=0; i<100000;i++){ let arr = new Array();}
+console.timeEnd('using Array');                                     //using Array: 5.383056640625 ms
+   
+console.time('using []');
+for(let i=0;i<100000;i++) {let arr = [];}
+console.timeEnd('using []');                                        //using []: 3.022705078125 ms
+```
+
+### **위 결과는 크롬에서 돌렸을 때 결과고 Safari에서는 매번 다른 결과가 나왔다.**
+
+
+
+
+
+#### **크롬에서 1억번 배열을 생성했을때 시간**
+
+| Using Array()  | Using []      |
+| -------------- | ------------- |
+| **94.361 ms**  | **77.613 ms** |
+| **99.846 ms**  | **77.564 ms** |
+| **104.616 ms** | **80.981 ms** |
+
+# **확실히 크롬에서는 리터럴([])이 성능이 더 우수하다고 결론지었다.**
+
+
+
+
+
+
+
+# :thinking: **근데 왜 []가 더 빠르지...??**
+
+
+
+
+
+
+
+
+
+준비중.
+
+
+
+
+
+
+
+
+
+# for in   VS for of
+
+
+
+우선 코드를 한번 보자.
+
+​	
+
+
+
+for in
+
+```javascript
+  Object.prototype.hello = 'hellowwwwwww';
+  Object.prototype.bye = "Byeeeeeeeee";
+  let iterable = [3,5,7];
+  iterable.mmmm = "mmmmmmmmm";
+
+	for(let key in iterable) console.log(key);
+  
+  result
+  -------------------------------------------------------------
+ [0,1,2,'mmm','hello','bye']
+```
+
+
+
+for of
+
+```javascript
+  Object.prototype.hello = 'hellowwwwwww';
+  Object.prototype.bye = "Byeeeeeeeee";
+  let iterable = [3,5,7];
+  iterable.mmmm = "mmmmmmmmm";
+  
+  for(let value of iterable) console.log(value);
+
+  result
+  -------------------------------------------------------------
+ [3,5,7]
+```
+
+
+
+
+
+for of는 ES6에 추가된 문법으로 프로토타입이 Symbol.iterable한 타입에만 사용이 가능하다.
+
+위 for of 예제를 보면 iterable에 값을 추가했음에도 [3,5,7]만 출력되었다.
+
+이는 우리가 알게모르게 Symbol이 iterable속성을 가지고 있는 Array를 사용했기 때문이다. 
+
+![](https://cdn.discordapp.com/attachments/799514329912705064/816616338235588638/unknown.png)
+
+
+
+Symbol.iterable한 속성을 가지고 있는 타입은 Array,String,Map/Set 등이 있다.
+
+그래서 뒤 늦게 **. **을 사용해서 프로퍼티를 추가한 hello , bye ,mmmm는 출력되지 않았다.
+
+
+
+
+
+# :thinking: 그렇다면 Object에 강제로 for of를 사용하면 어떻게 될까?
+
+
+
+```javascript
+  let test = {
+    aaa:222,
+    bbb:333
+  };
+
+ for(let value of test) console.log(value);
+
+
+
+
+result
+--------------------------------------------------------
+Uncaught TypeError: test is not iterable
+
+```
+
+
+
+iterable하지 않다고 에러난다.
+

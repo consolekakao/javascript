@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="text" id="value" value="0"> <button onclick="fun(1)">+</button> <button onclick="fun(2)">-</button>
+<script>
+  function fun(args){
+    if(args == 1)
+      document.getElementById('value').value = Number( document.getElementById('value').value) + 1;
+    else {
+      if (document.getElementById('value').value <= 0) alert('0이하로 불가');
+      document.getElementById('value').value = Number(document.getElementById('value').value) - 1;
+    }
+
+  }
+
+
+
+</script>
+</body>
+</html>
