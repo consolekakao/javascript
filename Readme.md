@@ -398,7 +398,9 @@ console.log(arr);
 
 <br><br><br>
 
-#  :thinking:  **기능상의 차이가 없다는데 결국 []를 쓰면 Array()를 ** 호출 하는 것 인데 속도가 저하되진 않을까?
+#  :thinking:  
+
+# 기능상의 차이가 없다는데 결국 []를 쓰면 Array()를 호출 하는 것 인데 속도가 저하되진 않을까?
 
 ```javascript
 console.time('using Array');
@@ -520,7 +522,7 @@ for of는 ES6에 추가된 문법으로 프로토타입이 Symbol.iterable한 �
 
 Symbol.iterable한 속성을 가지고 있는 타입은 Array,String,Map/Set 등이 있다.
 
-그래서 뒤 늦게 **. **을 사용해서 프로퍼티를 추가한 hello , bye ,mmmm는 출력되지 않았다.
+그래서 뒤 늦게 . 을 사용해서 프로퍼티를 추가한 hello , bye ,mmmm는 출력되지 않았다.
 
 <br><br>
 
