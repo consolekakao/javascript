@@ -428,11 +428,11 @@ console.timeEnd('using []');                                        //using []: 
 
 #### **크롬에서 1억번 배열을 생성했을때 시간**
 
-| Using Array()  | Using []      |
-| -------------- | ------------- |
-| **94.361 ms**  | **77.613 ms** |
-| **99.846 ms**  | **77.564 ms** |
-| **104.616 ms** | **80.981 ms** |
+| Using new Array() | Using []      |
+| ----------------- | ------------- |
+| **94.361 ms**     | **77.613 ms** |
+| **99.846 ms**     | **77.564 ms** |
+| **104.616 ms**    | **80.981 ms** |
 
 # <br><br>
 
@@ -450,15 +450,15 @@ console.timeEnd('using []');                                        //using []: 
 
 
 
-<br><br>
+
+
+리터럴은 [ 가 시작되는 것만 보고 바로 Array리터럴인걸 알지만, 
+
+new만 봐서는 어떤 타입의 객체를 생성하는건지 더 구문분석을 해야해서 느리다고 한다.
 
 
 
-준비중.
-
-<br><br>
-
-
+유사한(?) 사례로 [객체 리터럴보다 JSON.parse로 파싱하는 것이 더 빠른이유](https://wormwlrm.github.io/2019/12/04/Why-JSON-parse-is-faster-than-object-literal.html)를 참고하면 좋을 듯 하다.
 
 <br>
 
@@ -552,4 +552,6 @@ Uncaught TypeError: test is not iterable
 <br>
 
 **iterable하지 않다고 에러난다.**
+
+물론 직접 Custom해서 사용해 iterable속성을 구현해주면 Object에서도 사용이 가능하다!
 
