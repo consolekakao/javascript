@@ -398,9 +398,7 @@ console.log(arr);
 
 <br><br><br>
 
-#  :thinking:  
-
-# 기능상의 차이가 없다는데 결국 []를 쓰면 Array()를 호출 하는 것 인데 속도가 저하되진 않을까?
+#  :thinking: 기능상의 차이가 없다는데 결국 []를 쓰면 Array()를 호출 하는 것 인데 속도가 저하되진 않을까?
 
 ```javascript
 console.time('using Array');
@@ -452,9 +450,9 @@ console.timeEnd('using []');                                        //using []: 
 
 
 
-리터럴은 [ 가 시작되는 것만 보고 바로 Array리터럴인걸 알지만, 
+브라우저 엔진 관점에서 생각해보면 리터럴은 [ 가 시작되는 것만 보고 바로 Array리터럴인걸 알지만, 
 
-new만 봐서는 어떤 타입의 객체를 생성하는건지 더 구문분석을 해야해서 느리다고 한다.
+new Array()에 new만 봐서는 어떤 타입의 객체를 생성하는건지 다음 인자를 받아봐야 알 수 있기 때문에 과정이 하나 더 생겨서  느리다고 한다.
 
 
 
@@ -482,7 +480,7 @@ arr.forEach(callback(currentvalue[, index[, array]])[, thisArg])
 
 인자 값으로 1.요소값, 2.인덱스, 3.순회중인 배열   이렇게 세가지를 입력받는다.(필수는 아니다.)
 
-<span style="color:red"> map과 유사한데 forEach는 원본 배열을 수정하지 않는다.</span>
+<span style="color:red"> map과 유사한데 forEach는 새로운 배열을 반환하지 않는다.</span>
 
 
 
@@ -682,3 +680,14 @@ Uncaught TypeError: test is not iterable
 
 
 
+# 📖 다음주는 무엇을 공부할까?
+
+
+
+- 발표때 문제점 보완하기.
+
+- window안에 어떤 속성들이 있는지 까보기.
+
+- [W3C](https://www.w3schools.com/jsref/jsref_constructor_class.asp)에서 책에서 놓친 JS 메소드들과 익숙하지 않은 HTML태그들 써보기.
+
+- 클로저에 대한 이해.
