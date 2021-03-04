@@ -1,6 +1,6 @@
-JS 1일차.
 
-### **변수**
+
+**변수**
 
 > 변수란?
 >
@@ -436,7 +436,7 @@ console.timeEnd('using []');                                        //using []: 
 
 # <br><br>
 
-# **확실히 크롬에서는 리터럴([])이 성능이 더 우수하다고 결론지었다.**
+# **확실히 크롬에서는 <span style="color:red">리터럴([])이 성능이 더 우수</span>하다고 결론지었다.**
 
 
 
@@ -458,13 +458,47 @@ new만 봐서는 어떤 타입의 객체를 생성하는건지 더 구문분석�
 
 
 
+ [참고](https://stackoverflow.com/questions/7375120/why-is-arr-faster-than-arr-new-array)
+
+
+
+
+
 유사한(?) 사례로 [객체 리터럴보다 JSON.parse로 파싱하는 것이 더 빠른이유](https://wormwlrm.github.io/2019/12/04/Why-JSON-parse-is-faster-than-object-literal.html)를 참고하면 좋을 듯 하다.
 
 <br>
 
 
 
-# for in   VS   for of
+
+
+# forEach
+
+```
+arr.forEach(callback(currentvalue[, index[, array]])[, thisArg])
+```
+
+ 함수를 배열 요소 각각에 대해 실행하는 메서드인데 한번 써보니 엄청 편하다.
+
+인자 값으로 1.요소값, 2.인덱스, 3.순회중인 배열   이렇게 세가지를 입력받는다.(필수는 아니다.)
+
+<span style="color:red"> map과 유사한데 forEach는 원본 배열을 수정하지 않는다.</span>
+
+
+
+간략한 예시를 짜보았다.
+
+![](https://cdn.discordapp.com/attachments/799514329912705064/816959403974197298/unknown.png)
+
+
+
+
+
+<br>
+
+<br>
+
+# For in   VS   For of
 
 <br>
 
@@ -520,11 +554,55 @@ for of는 ES6에 추가된 문법으로 프로토타입이 Symbol.iterable한 �
 
 
 
-Symbol.iterable한 속성을 가지고 있는 타입은 Array,String,Map/Set 등이 있다.
+Symbol.iterable한 속성을 가지고 있는 타입은 Array,String,Map/Set 등이 있다. (IE 지원 X)
 
 그래서 뒤 늦게 . 을 사용해서 프로퍼티를 추가한 hello , bye ,mmmm는 출력되지 않았다.
 
 <br><br>
+
+# 😱 [Symbol.iterator]...? 
+
+<br>
+
+배열은 Symbol.iterator 메소드를 소유한다. 따라서 배열은 이터러블 프로토콜을 준수한 이터러블이다.
+
+일반 객체는 이터레이션 프로토콜을 준수(Symbol.iterator 메소드를 소유)하지 않기 때문에 이터러블이 아니다. 
+
+따라서 일반 객체는 for…of 문에서 순회할 수 없으며 Spread 문법의 대상으로 사용할 수도 없다. 
+
+하지만 일반 객체도 이터러블 프로토콜을 준수하도록 구현하면 이터러블이 된다. 
+
+<br>
+
+<br>
+
+<br>
+
+# 😤 그럼 이터러블 프로토콜은 또 뭔데?
+
+<br>
+
+> Array, String, Map, Set, TypedArray(Int8Array, Uint8Array, Uint8ClampedArray, Int16Array, Uint16Array, Int32Array, Uint32Array, Float32Array, Float64Array), DOM data structure(NodeList, HTMLCollection), Arguments
+
+<br>
+
+<br>
+
+위 데이터 소스는 모두 이터레이션 프로토콜을 준수하는 이터러블이다. 즉, 이터러블은 데이터 공급자(Data provider)의 역할을 한다.
+
+만약 이처럼 다양한 데이터 소스가 각자의 순회 방식을 갖는다면 데이터 소비자는 다양한 데이터 소스의 순회 방식을 모두 지원해야 한다. 
+
+이는 효율적이지 않다. 하지만 다양한 데이터 소스가 이터레이션 프로토콜을 준수하도록 규정하면 
+
+<span style="color:red"> **데이터 소비자는 이터레이션 프로토콜만을 지원하도록 구현하면 된다.**</span>
+
+![출처:poiemaweb](https://poiemaweb.com/img/iteration-protocol-interface.png)
+
+
+
+즉, 이터레이션 프로토콜은 다양한 데이터 소스가 하나의 순회 방식을 갖도록 규정하여 데이터 소비자가 효율적으로 다양한 데이터 소스를 사용할 수 있도록 <span style="color:red">**데이터 소비자와 데이터 소스를 연결하는 인터페이스의 역할을 한다.**</span>
+
+
 
 
 
@@ -554,4 +632,53 @@ Uncaught TypeError: test is not iterable
 **iterable하지 않다고 에러난다.**
 
 물론 직접 Custom해서 사용해 iterable속성을 구현해주면 Object에서도 사용이 가능하다!
+
+
+
+
+
+# 🖥Console 관련 명령어
+
+
+
+> 로그찍기
+>
+> ```javascript
+> console.log("HelloWorld!");
+> console.error("HelloWorld!");
+> console.warn("HelloWorld!");
+> ```
+>
+> 펼쳐보기
+>
+> ```javascript
+> console.dir(doc);
+> ```
+>
+> 타임체크
+>
+> ```javascript
+> console.time('test');
+> ~~~~ Code. ~~~~
+> console.timeEnd('test');
+> ```
+>
+> 스타일 입히기
+>
+> ```javascript
+> console.log("%cHello","background-color:Brown; font-size:100px;");
+> console.log("%cHEBEES","background-color:White;color:Purple;font-size:100px;");
+> ```
+>
+> 위 와같이 %c 플래그를 맨 앞에 먹이고 두번째 인자로 CSS를 주면 끝.
+>
+> ![](https://cdn.discordapp.com/attachments/799514329912705064/816951123356418058/unknown.png)
+
+
+
+
+
+
+
+
 
