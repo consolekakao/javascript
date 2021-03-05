@@ -69,18 +69,18 @@ console.log("%cHEBEES","background-color:White;color:Purple;font-size:100px;");
 //
 //
 // console.warn('dd')
-//   Object.prototype.hello = 'hellowwwwwww';
-//   Object.prototype.bye = "Byeeeeeeeee";
-//   let iterable = [3,5,7];
-//   //iterable.push(3);
-//   iterable.mmmm = "mmmmmmmmm";
-//   console.log('iterable ',iterable)
-//
-//
-//   console.warn('key')
-//   for(let key in iterable) console.log(key);
-//   console.warn('value')
-//   for(let value of iterable) console.log(value);
+  Object.prototype.hello = 'hellowwwwwww';
+  Object.prototype.bye = "Byeeeeeeeee";
+  let iterable = [3,5,7];
+  //iterable.push(3);
+  iterable.mmmm = "mmmmmmmmm";
+  console.log('iterable ',iterable)
+
+
+  console.warn('key')
+  for(let key in iterable) console.log(key);
+  console.warn('value')
+  for(let value of iterable) console.log(value);
 //
 //   iterable.ww = "af"
 //
@@ -94,15 +94,15 @@ console.log("%cHEBEES","background-color:White;color:Purple;font-size:100px;");
 //   // console.dir(iterable);
 //   // console.dir(test);
 
-  let w;
-  for(w=0;w<5;w++){
-    setTimeout(function (){console.log((w))},0);
-  }
-  var i;
-  for(i=0;i<5;i++){
-    setTimeout(function (){console.log((i))},0);
-
-  }
+  // let w;
+  // for(w=0;w<5;w++){
+  //   setTimeout(function (){console.log((w))},0);
+  // }
+  // var i;
+  // for(i=0;i<5;i++){
+  //   setTimeout(function (){console.log((i))},0);
+  //
+  // }
 /**
 function  f() {
   console.log(this);
@@ -122,6 +122,20 @@ console.log("O : ",o,this);
 console.log("O2 : ",o2,this);
 
 */
+
+
+let data = ['테스트지롱','이것도 테스트','이것또한테스트','자스자스','HelloWorld!'];
+
+for(let i=0;i<data.length;i++) console.log(i,data[i]); //for 사용 시
+console.warn('#############################################');
+data.forEach((data,idx)=>{console.log(idx,data)}); //forEach 사용 시
+
+
+
+
+
+
+
 
 </script>
 </body>

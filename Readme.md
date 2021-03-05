@@ -418,9 +418,9 @@ for(let i=0;i<100000;i++) {let arr = [];}
 console.timeEnd('using []');                                        //using []: 3.022705078125 ms
 ```
 
-### **위 결과는 크롬에서 돌렸을 때 결과고 Safari에서는 매번 다른 결과가 나왔다.**
+### **위 결과는 크롬에서 돌렸을 때 결과고 Safari에서는 매번 다른 결과가 나왔다.** 
 
-
+아마 브라우저엔진의 해석 방식이 달라서 그런 거 같다.
 
 <br><br>
 
@@ -480,6 +480,8 @@ arr.forEach(callback(currentvalue[, index[, array]])[, thisArg])
 
 인자 값으로 1.요소값, 2.인덱스, 3.순회중인 배열   이렇게 세가지를 입력받는다.(필수는 아니다.)
 
+map과 동일하게 배열을 순회하는걸 중간에 break; 불가능하다.
+
 <span style="color:red"> map과 유사한데 forEach는 새로운 배열을 반환하지 않는다.</span>
 
 
@@ -492,6 +494,14 @@ arr.forEach(callback(currentvalue[, index[, array]])[, thisArg])
 
 
 
+이건 for과 forEach가 동일한 동작을 하는 예시코드.
+
+아마 게시판 작성시 요긴하게 써 먹을 수 있을 듯하다.
+
+![](https://cdn.discordapp.com/attachments/799514329912705064/817209299876970506/unknown.png)
+
+
+
 <br>
 
 <br>
@@ -499,6 +509,8 @@ arr.forEach(callback(currentvalue[, index[, array]])[, thisArg])
 # For in   VS   For of
 
 <br>
+
+<center>
 
 우선 코드를 한번 보자.
 
@@ -554,7 +566,7 @@ for of는 ES6에 추가된 문법으로 프로토타입이 Symbol.iterable한 �
 
 Symbol.iterable한 속성을 가지고 있는 타입은 Array,String,Map/Set 등이 있다. (IE 지원 X)
 
-그래서 뒤 늦게 . 을 사용해서 프로퍼티를 추가한 hello , bye ,mmmm는 출력되지 않았다.
+그래서 뒤 늦게 . 을 사용해서 객체 프로퍼티로 추가한 hello , bye ,mmmm는 출력되지 않았다.
 
 <br><br>
 
@@ -661,6 +673,35 @@ Uncaught TypeError: test is not iterable
 > console.timeEnd('test');
 > ```
 >
+> 그룹으로 묶기
+>
+> ```javascript
+> console.group(); 
+> console.log('첫번째 메세지'); 
+> console.log('두번째 메세지'); 
+> console.groupEnd();
+> 
+> 
+> //중첩도 가능
+> console.group('A 그룹'); 
+> console.log('첫번째 메세지'); 
+> console.group('B 그룹'); 
+> console.log('하위 메세지 a'); 
+> console.log('하위 메세지 b'); 
+> console.groupEnd(); 
+> console.log('두번째 메세지'); 
+> console.groupEnd();
+> ```
+>
+> <p>
+>   <img src="https://cdn.discordapp.com/attachments/799514329912705064/817258791900282920/unknown.png" width="300px;" height="200px;"/>
+>   <img src="https://cdn.discordapp.com/attachments/799514329912705064/817259342293762058/unknown.png" width="300px;" height="200px;"/>
+> </p>
+>
+> 
+>
+> 
+>
 > 스타일 입히기
 >
 > ```javascript
@@ -674,19 +715,146 @@ Uncaught TypeError: test is not iterable
 
 
 
+> <p>
+>   <img src="https://cdn.discordapp.com/attachments/799514329912705064/817255557765136404/unknown.png" width="500px; height="400px;""/>
+> </p>
+>
+> 
+
+이 처럼 Style을 배열에 넣어두고 인자로 배열을 넘겨서 한번에 호출해서 사용할 수 있고,
+
+```
+console.log('%c HEB%cEES ', 'background-color:#000000; color:#ffffff; font-size:50px;', 
+'background-color:red; color:#ffffff; font-size:50px;');
+```
+
+<p>
+  <img src="https://cdn.discordapp.com/attachments/799514329912705064/817256351515672586/unknown.png" width="500px;" height="100px;"
+</p>
+
+
+
+<span style="color:red"> 이렇게 %c를 구분자로 주면 각각 다른 Style을 적용할 수 있다!</span>
 
 
 
 
 
 
-# 📖 다음주는 무엇을 공부할까?
+
+
+
+
+
+
+
+
+
+
+
+# 스크립트의 실행 시점을 조절하는 Async와 Defer속성
+
+이게 무슨 말인지부터 해석 할 필요가 있는 거 같다.
+
+내가 기존에 알고있는 건 브라우저가  HTML 파일을 읽어온 후, 위에서 부터 아래로 한 줄씩 (인터프리터(?)) 방식으로 해석을 시작하고
+
+그러다가 중간에 스크립트 로드 코드를 만나게 되면, 해당 코드의 내용을 모두 해석하기 전까지 나머지 아래의 HTML 렌더를 일시적으로 멈춘다는 것.
+
+그래서 로드하는 스크립트 파일의 용량이 크거나 한다면 사용자 입장에서는 페이지가 빠르게 완전히 불러와지지 않아 불만이 생길 수 있다.
+
+
+
+<p>
+  <img src="https://wormwlrm.github.io/img/posts/2021-02-28/3.png" width="800px"/>
+</p>
+
+
+
+​																										일반적인 스크립트 로드 방식.
+
+
+
+
+
+그래서 지금까지 작성했던 코드들은 큰 용량을 딱히 불러올 일도 없었고 있더라도 
+
+최적화가 잘 된 스크립트 파일을 사용해서 딱히 문제를 마주할 일이 없었다.
+
+혹시 몰라 이러한 상황을 대비했던 방안이 스크립트 파일을 \<Body>태그 맨 마지막에 넣어서 UI를 구성하는 코드들을 모두 
+
+해석 한 후에 스크립트 코드를 로드하게 했었다.
+
+
+
+
+
+일단 이 방법도 이상적인 방법이라 생각하긴 했지만 치명적인 문제가 있다.
+
+사용자에게 먼저 UI를 렌더시키고 JS를 불러온다면 로드가 완료된 시점에서 사용자가 특정 이벤트를 실행했고 
+
+그 이벤트를 담당하는 JS가 아직 불러와지지 않은 상태라면 당연히 예기치 못한 에러를 뱉을 것이다.
+
+네트워크 연결이 원활하지 않은 황경에서는 더더욱 이런 상황에 놓일 가능성이 커진다.
+
+
+
+
+
+# 🤬 그래서 Async와 Defer가 뭐냐고!
+
+
+
+위 와 같은 상황을 막고자 스크립트 파일을 병렬로 불러오는 방식으로 DOM의 렌더 과정을 막지 않게 선언해주는 키워드가 바로
+
+Async와 defer 라는것!
+
+
+
+<p float="left">
+ 	<img src="https://wormwlrm.github.io/img/posts/2021-02-28/4.png" width="500px"/>
+  <img src="https://wormwlrm.github.io/img/posts/2021-02-28/5.png" width="500px"/>
+</p>
+
+
+
+차이점을 간단하게 요약하자면 Async는 스크립트 파일을 <span style="color:red"> 로드하는 시간만 병렬처리</span>하고 
+
+<span style="color:red">로드가 완료되면 렌더링 과정을 스톱</span>s시키고 스크립트 파일을 해석한다. 
+
+또한 먼저 로드가 완료된 스크립트부터 해석하므로 실행 순서가 보장되지 않는다.
+
+반면에 defer의 경우 스크립트의 로드를 병렬처리하고 <span style="color:red">스크립트 파일을 해석하는건 렌더링이 끝나고 처리 </span>하는 것. 
+
+또한 <span style="color:red">스크립트의 해석 실행순서가 보장된다.</span>
+
+
+
+
+
+## 결론
+
+> 스크립트 파일끼리의 실행 순서 의존성이 없다면 Async를 사용하면 좋을 듯 하다.
+>
+> 의존성이 있다면 Defer를 이용하자.
+
+ 
+
+
+
+
+
+
+
+# 📖 다음에는 무엇을 공부할까?
 
 
 
 - 발표때 문제점 보완하기.
+- Symbol 이해하기.
+- Chrome 디버거 공부하고 활용해보기
 
 - window안에 어떤 속성들이 있는지 까보기.
+- Jquery 공부하기.
 
 - [W3C](https://www.w3schools.com/jsref/jsref_constructor_class.asp)에서 책에서 놓친 JS 메소드들과 익숙하지 않은 HTML태그들 써보기.
 
