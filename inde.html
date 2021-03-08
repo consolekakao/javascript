@@ -4,139 +4,171 @@
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
-<body style="height: 5000px">fff
-<div id="box">asfdasdfsadfdfdfs</div>
+<body>
+  <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>               //ag-grid
+  <script src="https://unpkg.com/ag-grid-enterprise/dist/ag-grid-enterprise.min.noStyle.js"></script>     //ag-grid
 <script>
-  console.log("fasfasf")
-console.log("%cttttttttttttttttttttt","color:brown; ");
-//   var obj = {
-//     name:"consolekakao",
-//     skill:['js','java','mysql'],
-//     test:[1,3,5,7,9]
-//   }
-//     // for(var a in obj){
-//     //   // console.log(a)
-// console.log(Object.values(obj));
-// console.log('navigate',window.navigator);
-// console.time('a');
-// for(let i=0;i<10000;i++){
-//   let a = 0;
-// }
-// console.timeEnd('a');
-//     // }
-//
-//   let b = [1,,,,,,,8]
-//   console.log(b);
-//   b[5] = 124;
-//   console.log((b));
-//   console.log('#############################');
-//   let c = new Array();
-//   console.log('c',c);
-//   c[3] = 33333;
-//   console.log(c[0]);
-//
-//  let d = ['agerger','qwettqw','gerger','qfwqfq'];
-//   console.log(d.length,d);
-//   // delete d[1];
-//   // console.log(d.length,d)
-// d.push(d.reverse())
-//   console.log(d.length,d)
-//
-//   console.error(window.screen);
-// console.time('a');
-// window.moveBy(0,15000);
-// console.timeEnd('a');
-//
-//
-console.time('using Array');
-for(let i=0; i<10000;i++){ let arr = new Array(1);}
-console.timeEnd('using Array');
 
-console.time('using []');
-for(let i=0;i<10000;i++) {let arr = [];}
-console.timeEnd('using []');
+let colum,grid_option,row_data;
 
-console.time('using Array');
-for(let i=0; i<100000000;i++){ let arr = new Array(1);}
-console.timeEnd('using Array');
+ colum = [
+  {
+    headerName:"ssss", //헤더 필드명
+    field:"make", //필드명  headerName 속성이 없으면 이 속성이 header에 표시됨.
+    sortable:true, //정렬 기능 여부
+    filter : true, //필터 기능 여부부
+    checkboxSelection:true,  //각 row에 체크 버튼 여부
+    width:200, //필드 width값 설정
+    headerCheckboxSelection: true //헤더에 전체 체크/해제 버튼 여부
+  },
+  {field: "model",sortable:true,filter : true},
+  {field: "price",sortable:true,filter : true}
+]
 
-console.time('using []');
-for(let i=0;i<100000000;i++) {let arr = [];}
-console.timeEnd('using []');
+ row_data = [
+  { "make": "Porsche", "model": "Boxter", "price": 7200000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 },
+  { "make": "Toyota", "model": "Celica", "price": 35000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Ford", "model": "Mondeo", "price": 32000 },
+  { "make": "Porsche", "model": "Boxter", "price": 72000 }
+]
 
-console.log("%cHello","background-color:Brown; font-size:100px;");
-console.log("%cHEBEES","background-color:White;color:Purple;font-size:100px;");
-//
-//
-// console.warn('dd')
-  Object.prototype.hello = 'hellowwwwwww';
-  Object.prototype.bye = "Byeeeeeeeee";
-  let iterable = [3,5,7];
-  //iterable.push(3);
-  iterable.mmmm = "mmmmmmmmm";
-  console.log('iterable ',iterable)
-
-
-  console.warn('key')
-  for(let key in iterable) console.log(key);
-  console.warn('value')
-  for(let value of iterable) console.log(value);
-//
-//   iterable.ww = "af"
-//
-//   let test = {
-//     aaa:222,
-//     bbb:333
-//   };
-//
-//  for(let value of test) console.log(value);
-//   //
-//   // console.dir(iterable);
-//   // console.dir(test);
-
-  // let w;
-  // for(w=0;w<5;w++){
-  //   setTimeout(function (){console.log((w))},0);
-  // }
-  // var i;
-  // for(i=0;i<5;i++){
-  //   setTimeout(function (){console.log((i))},0);
-  //
-  // }
-/**
-function  f() {
-  console.log(this);
-  console.log("f is called");
+ grid_option = {
+  columnDefs : colum, //세로컬럼
+  rowData : row_data,  //row 데이터
+  rowSelection:'multiple', //중복선택 여부
+  groupSelectsChildren: false,
+  enableColResize: true,
+  animateRows: true, //행 애니메이션
+  defaultColDef: {
+    suppressMenu: true,
+    cellStyle : function(params) {
+      return {
+        'border-right': '2px solid #d9dcde'
+      }
+    }
+  },
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const grid_div = document.querySelector('#test');
+  new agGrid.Grid(grid_div,grid_option);
+})
 
-function setName(name){
-  this.name = name;
+
+
+
+const btn = () => {
+  const select_nodes = grid_option.api.getSelectedNodes();
+  const selected_data = select_nodes.map(node => node.data)
+  const selected_data_string = selected_data.map(node => `${node.make} ${node.model} ${node.price}\n`).join('')
+  alert(`${selected_data_string}`)
 }
-
-var o = {name:"Object",method:f,setName:setName};
-var o2 = {name:"",setName:setName};
-o.setName("Object1");
-o2.setName("Object2");
-console.log("O : ",o,this);
-console.log("O2 : ",o2,this);
-
-*/
-
-
-let data = ['테스트지롱','이것도 테스트','이것또한테스트','자스자스','HelloWorld!'];
-
-for(let i=0;i<data.length;i++) console.log(i,data[i]); //for 사용 시
-console.warn('#############################################');
-data.forEach((data,idx)=>{console.log(idx,data)}); //forEach 사용 시
-
-
-
-
-
-
 
 
 </script>
+<div id="test" style="height: 600px; width:600px;" class="ag-theme-alpine"></div>
+<button onclick="btn()">btn</button>
+
+
+
 </body>
 </html>
